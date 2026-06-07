@@ -59,8 +59,11 @@
 
                 <div class="col-8 col-lg-4">
                     <section class="text-start text-light">
-                        <h2 class="border border-1 d-inline-block rounded p-2"><a href="#">اوبر
-                                دیزاین</a></h2>
+<h2 class="border border-1 d-inline-block rounded p-2">
+    <a href="<?php echo home_url('/'); ?>">
+        <?php bloginfo('name'); ?>
+    </a>
+</h2>
                     </section>
                 </div>
 
@@ -87,12 +90,19 @@
                             <div class="offcanvas-body">
 
                                 <nav>
-                                    <ul class="list-unstyled text-start">
-                                        <li><a href="#" class="btn-footer">آموزش</a></li>
-                                        <li><a href="#" class="btn-footer">خدمات ما</a></li>
-                                        <li><a href="#" class="btn-footer">مقالات</a></li>
-                                        <li><a href="#" class="btn-footer">تماس با ما</a></li>
-                                    </ul>
+<?php
+if (has_nav_menu('main_menu')) {
+    wp_nav_menu(
+        array(
+            'theme_location' => 'main_menu',
+            'menu_class' => 'list-unstyled text-start',
+            'container' => false,
+            'link_before' => '<span class="btn-footer">',
+            'link_after' => '</span>'
+        )
+    );
+}
+?>
                                 </nav>
 
                             </div>
